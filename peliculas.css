@@ -1,0 +1,282 @@
+
+*{
+/* padding: 0; */
+box-sizing: border-box;
+
+}
+
+
+html{
+
+font-size: 1rem;
+height: 100%;
+min-width: 400px;
+
+}
+
+header{
+min-height: 50px;
+margin: 0.5rem;
+border: 3px burlywood solid;
+background-color: bisque;
+display: flex;
+align-content: center;
+
+}
+
+
+section{
+    min-height: 50px;
+    margin: 0.5rem;
+    border: 3px violet solid;
+    background-color: lavender;
+    display: wrap;
+    align-content: center;
+    text-align: left;
+    align-items:center;
+
+
+}
+
+
+article{
+
+    min-height: 5rem;
+    margin: 0.5rem;
+    border: 3px violet solid;
+    background-color: lavender;
+    display: flex;
+    align-content:space-between, center;
+    text-align: left;
+    
+  
+    
+
+}
+
+h2 {
+  align-items: center;
+  display: flex;
+  text-align: center;
+  align-content: center;
+  justify-content: center;
+}
+
+/* h2{
+    /* min-height: 50px;
+    margin: 0.5rem;
+    border: 3px violet solid;
+    background-color: lavender;
+    display: flex;
+    align-content: center;
+    text-align: left;
+    /* overflow: auto; */
+    /* float: left; */
+
+
+footer{
+  background-color: bisque;
+}
+.card-container {
+  width: 90%;
+  height: 300px;
+  position: relative;
+  border-radius: 10px;
+  box-shadow: 0 10px 20px rgba(0, 0, 0, 0.2);
+  overflow: hidden;
+  
+}
+
+.card {
+  width: 100%;
+  height: 100%;
+  border-radius: inherit;
+  background-image: url(https://www.lavanguardia.com/peliculas-series/images/movie/backdrop/1998/7/w1280/bdD39MpSVhKjxarTxLSfX6baoMP.jpg);
+  background-size: 32rem;
+  
+
+}
+
+.card .front-content {
+  width: 100%;
+  height: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  transition: all 0.6s cubic-bezier(0.23, 1, 0.320, 1)
+}
+
+/* .card .front-content p {
+  font-size: 32px;
+  font-weight: 700;
+  text-align: center;
+  opacity: 1;
+  background: linear-gradient(-45deg, #bd29f8 0%, #770fff 100% );
+  background-clip: text;
+  padding-top: 0;
+  -webkit-background-clip: text;
+  -webkit-text-fill-color:rgba(3, 3, 3, 0.308);
+  transition: all 0.6s cubic-bezier(0.23, 1, 0.320, 1)
+
+} */
+
+.card .content {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  display: flex;
+  flex-direction: column;
+  text-align: left;
+  align-items: center;
+  justify-content: center;
+  gap: 10px;
+  background: linear-gradient(-45deg, #bd29f8 0%, #770fff 100% );
+  color: #000;
+  font-size: 1.5rem;
+  padding: 3px;
+  line-height: 1;
+  border-radius: 5px;
+  pointer-events: none;
+  transform: translateY(96%);
+  transition: all 0.6s cubic-bezier(0.23, 1, 0.320, 1);
+}
+
+.card .content .heading {
+  font-size: 32px;
+  font-weight: 700;
+}
+
+.card:hover .content {
+  transform: translateY(0);
+}
+
+.card:hover .front-content {
+  transform: translateY(-30%);
+}
+
+.card:hover .front-content p {
+  opacity: 0;
+}
+
+
+
+
+
+
+.wrapper {
+    display: inline-flex;
+    list-style: none;
+    height: 120px;
+    width: 100%;
+    padding-top: 40px;
+    font-family: "Poppins", sans-serif;
+    justify-content: center;
+  }
+  
+  .wrapper .icon {
+    position: relative;
+    background: #fff;
+    border-radius: 50%;
+    margin: 10px;
+    width: 50px;
+    height: 50px;
+    font-size: 18px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+    box-shadow: 0 10px 10px rgba(0, 0, 0, 0.1);
+    cursor: pointer;
+    transition: all 0.2s cubic-bezier(0.68, -0.55, 0.265, 1.55);
+  }
+  
+  .wrapper .tooltip {
+    position: absolute;
+    top: 0;
+    font-size: 14px;
+    background: #fff;
+    color: #fff;
+    padding: 5px 8px;
+    border-radius: 5px;
+    box-shadow: 0 10px 10px rgba(0, 0, 0, 0.1);
+    opacity: 0;
+    pointer-events: none;
+    transition: all 0.3s cubic-bezier(0.68, -0.55, 0.265, 1.55);
+  }
+  
+  .wrapper .tooltip::before {
+    position: absolute;
+    content: "";
+    height: 8px;
+    width: 8px;
+    background: #fff;
+    bottom: -3px;
+    left: 50%;
+    transform: translate(-50%) rotate(45deg);
+    transition: all 0.3s cubic-bezier(0.68, -0.55, 0.265, 1.55);
+  }
+  
+  .wrapper .icon:hover .tooltip {
+    top: -45px;
+    opacity: 1;
+    visibility: visible;
+    pointer-events: auto;
+  }
+  
+  .wrapper .icon:hover span,
+  .wrapper .icon:hover .tooltip {
+    text-shadow: 0px -1px 0px rgba(0, 0, 0, 0.1);
+  }
+  
+  .wrapper .facebook:hover,
+  .wrapper .facebook:hover .tooltip,
+  .wrapper .facebook:hover .tooltip::before {
+    background: #1877F2;
+    color: #fff;
+  }
+  
+  .wrapper .twitter:hover,
+  .wrapper .twitter:hover .tooltip,
+  .wrapper .twitter:hover .tooltip::before {
+    background: #1DA1F2;
+    color: #fff;
+  }
+  
+  .wrapper .instagram:hover,
+  .wrapper .instagram:hover .tooltip,
+  .wrapper .instagram:hover .tooltip::before {
+    background: #E4405F;
+    color: #fff;
+  }
+  
+
+
+
+
+
+
+
+
+
+
+
+
+.contenedor {
+    max-width: 1200px;
+    width: 95%;
+    margin: 0 auto;
+}
+
+@media (min-width: 600px) {
+    .contenedor {
+        width: 80%;
+    }
+}
+
+@media (min-width:768px) {
+    .contenedor {
+        width: 90%;
+    }
+}
