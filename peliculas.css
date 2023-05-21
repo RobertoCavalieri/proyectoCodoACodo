@@ -87,12 +87,15 @@ footer{
   
 }
 
-.card {
+.card img {
+  
   width: 100%;
   height: 100%;
+  
   border-radius: inherit;
-  background-image: url(https://www.lavanguardia.com/peliculas-series/images/movie/backdrop/1998/7/w1280/bdD39MpSVhKjxarTxLSfX6baoMP.jpg);
-  background-size: 32rem;
+  
+
+  
   
 
 }
@@ -250,19 +253,8 @@ footer{
     background: #E4405F;
     color: #fff;
   }
+  
 
-.wrapper .circle {
-    width: 40px;
-    height: 40px;
-    border-radius: 50%;
-    overflow: hidden;
-}
-
-.wrapper .circle img {
-    width: 100%;
-    height: 100%;
-    object-fit: cover;
-}
 
 
 
