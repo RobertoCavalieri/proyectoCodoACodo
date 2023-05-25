@@ -8,23 +8,27 @@ html {
 	font-size: 15px;
 	font-family: 'Montserrat', sans-serif;
 	scroll-behavior: smooth;
+    color: white;
 }
 
 
 h1{
+    color: rgb(255, 255, 255);
     font-size: 3.5em;
 }
 
 h2{
+    color: rgb(255, 255, 255);
     font-size: 2.7em;
 }
 
 h3{
+    color: rgb(255, 255, 255);
     font-size: 2em;
 }
 
 p {
-	color: black;
+	color: rgb(255, 255, 255);
 	font-size: 1.2rem;
 	margin-top: 5px;
 	line-height: 2.5rem;
@@ -45,7 +49,7 @@ button{
 	padding: 10px 30px;
 	color: white;
 	background-color: transparent;
-	border: 2px solid rgb(39, 12, 49);
+	border: 2px solid rgb(39, 2, 53);
 	font-size: 2rem;
 	text-transform: uppercase;
 	letter-spacing: 0.1rem;
@@ -57,7 +61,7 @@ button{
 
 button:hover{
     color: white;
-	background-color: rgb(77, 54, 87);
+	background-color: rgb(89, 28, 116);
 }
 
 
@@ -108,14 +112,16 @@ header a:hover{
 /*pag prin*/
 
 #intro{
+    color: white;
     display: flex;
     align-items: center;
     justify-content: center;
     text-align: center;
     flex-direction: column;
-    background-color: rgb(30, 30,  30);
-    color: white;
-    height: 100vh;
+    background-color: rgb(255, 255, 255);
+    height: 90vh;
+    background: url(Imagenes/Varios.png) no-repeat center center fixed; 
+    background-size: cover;
  }
 
 #intro h2{
@@ -128,7 +134,8 @@ header a:hover{
 
 #inicio {
 
-    background-color: rgb(255, 255, 255);
+    color: white;
+    background-color: rgb(0, 0, 0);
 }
 
 
@@ -136,10 +143,10 @@ header a:hover{
 
 
 #nuestros-programas{
-    background-color: rgb(255, 255, 255);
+    background-color: rgb(0, 0, 0);
     font-size: 1.2rem;
 	font-weight: 300;
-	color: rgb(0, 0, 0);
+	color: rgb(255, 255, 255);
 	margin-bottom: 10px;
 	text-transform: uppercase;
 	letter-spacing: 0.2rem;
@@ -169,20 +176,20 @@ header a:hover{
     .carta:first-child { /*con esto selecciono solo el primero*/
         background-image: linear-gradient(
             0deg,
-            rgba(0,0,0,0.5),
+            rgba(0, 0, 0, 0.5),
             rgba(53, 35, 82, 0.5)
-        ),
-        url(../img/PELICULAS.jpg);
+        );
 
     }
 
     .carta:nth-child(2){
+        
         background-image:linear-gradient(
             0deg,
-            rgba(53, 35, 82, 0.5),
-            rgba(0,0,0,0.5)
-        ),
-        url(../img/SERIES.jpg);
+            rgba(0, 0, 0, 0.5),
+            rgba(53, 35, 82, 0.5)
+        );
+        
 
     }
 
@@ -191,23 +198,20 @@ header a:hover{
             0deg,
             rgba(0,0,0,0.5),
             rgba(53, 35, 82, 0.5)
-        ),
-        url(../img/SERIES.jpg);
-
-
+        );
     }
 
      /*CARACTERISTICAS*/
 
 
      #caracteristicas{
-        background-color: rgb(30, 30,  30);
+        background-color: rgb(0, 0, 0);
         font-size: 1.2rem;
         font-weight: 300;
-        color: rgb(255, 255, 255);
         margin-bottom: 10px;
         text-transform: uppercase;
         letter-spacing: 0.2rem;
+        color: rgb(255, 255, 255);
         text-align: center;
         }
 
@@ -217,11 +221,11 @@ header a:hover{
 
 
      footer{
-        background-color: rgb(230, 230, 230);
+        background-color: rgb(0, 0, 0);
     }
     footer p{
         margin: 0;
-        color: rgb(100, 100, 100);
+        color: rgb(0, 0, 0);
     }
     footer .container{
         height: 150px;
@@ -330,7 +334,12 @@ header a:hover{
 
 #map {
     height: 300px;
-    width: 70%;
+    width: 60%;
+    align-items: right justify;
+    justify-items: center;
+    justify-content: center;
+    margin-left: 20%;
+    margin-right: 20%;
     
 }
 .container {
@@ -402,7 +411,8 @@ header a:hover{
 
 /* Estilos adicionales para mejorar la apariencia */
 .containerRedes {
-    background-color: #f9f9f9;
+    background-color: #000000;
+    color: white;
     padding: 20px;
 }
 
