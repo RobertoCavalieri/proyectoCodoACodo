@@ -12,3 +12,11 @@ document.addEventListener('DOMContentLoaded', function() {
         });
     });
 });
+
+Function
+redirectToRandomSection() 
+{
+    var sections = [ 'Peliculas.html','Series.html', 'Documentales.html'];
+    var randomindex = Math.floor(Math.random() * sections.length);
+    var randomSection = sections[randomindex];
+    window.location.href = randomSection;}
