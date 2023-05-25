@@ -27,8 +27,44 @@
 
 
     <section id="intro">
+
         <h2>¿No sabés que ver hoy??</h2>
-        <button onclick="redirctToRandomSection()">CLICK AQUÍ</button>
+
+        <div id="gallery" class="carousel slide" data-bs-ride="carousel">
+            <div class="carousel-inner">
+                <div class="carousel-item active" data-bs-interval="4000">
+                    <img class="d-block w-100" src="Imagenes/Brokeback Mountain.jpg" alt="img">
+                    <div class="carousel-caption d-none d-md-block">
+                        <h3>PELICULA 1</h3>
+                    </div>
+                </div>
+                <div class="carousel-item" data-bs-interval="4000">
+                    <img class="d-block w-100" src="Imagenes/BlackMirror.jpg" alt="img">
+                    <div class="carousel-caption d-none d-md-block">
+                        <h3>PELICULA 2</h3>
+                    </div>
+                </div>
+                <div class="carousel-item" data-bs-interval="4000">
+                    <img class="d-block w-100" src="Imagenes/300.jpg" alt="img">
+                    <div class="carousel-caption d-none d-md-block">
+                        <h3>PELICULA 3</h3>
+                    </div>
+                </div>
+                
+            </div>
+     
+            <button class="carousel-control-prev" type="button" data-bs-target="#gallery" data-bs-slide="prev">
+                <span class="carousel-control-prev-icon"></span>
+                <span class="visually-hidden">Anterior</span>
+            </button>
+            <button class="carousel-control-next" type="button" data-bs-target="#gallery" data-bs-slide="next">
+                <span class="carousel-control-next-icon"></span>
+                <span class="visually-hidden">Siguiente</span>
+            </button>
+        </div>
+    </div>
+
+
     </section>
 
     <section id="nuestros-programas">
@@ -123,18 +159,10 @@
                                         }, false)
                                     })
                                     })()
-                          </script>
-                                                        
-                                                
+                          </script>                               
+        </div>    
         </div>
-
-
-            
-        </div>
-
     </section>
-
-
 
     <section id="inicio">
         <div class="container">
@@ -147,8 +175,6 @@
 
         </div>
       </section>
-
-
 
     <footer>
         <div class="containerRedes">

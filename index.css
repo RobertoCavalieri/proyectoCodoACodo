@@ -67,7 +67,7 @@ button:hover{
 }
 
 header{
-    background-color: rgb(245, 245, 245);
+    background-color: rgb(255, 255, 255);
 }
 
  header .logo{
@@ -107,26 +107,6 @@ header a:hover{
 
 /*pag prin*/
 
-#intro{
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    text-align: center;
-    flex-direction: column;
-    background-color: rgb(30, 30,  30);
-    color: white;
-    height: 100vh;
- }
-
-#intro h2{
-    font-size: 7vw;
-}
- #intro button{
-    font-size: 1.75em;
-}
-
-
-
 
 #inicio {
 
@@ -135,8 +115,110 @@ header a:hover{
 
 #inicio .container{
     text-align: center;
-    padding: 200px 12px;
+    padding: 0px 12px;
 
+}
+
+#intro {
+    text-align: center;
+    padding: 20px 12px;
+    background-color: rgb(255, 255, 255);
+
+}
+
+#intro button{
+    display: inline-block;
+	padding: 10px 30px;
+	color: white;
+	background-color: transparent;
+	font-size: 2rem;
+	text-transform: uppercase;
+	letter-spacing: 0.1rem;
+	margin-top: 30px;
+	transition: 0.3s ease;
+	transition-property: background-color, color;
+}
+
+
+#intro button:hover{
+    color: white;
+}
+
+
+/* SLIDER ESTILO */
+
+
+/* caption */
+.carousel-caption {
+	background-color: rgba(53, 6, 24, 0.681);
+	color: white;
+	padding-bottom: 4rem;
+}
+
+
+/* Movimiento Section */
+#movimiento .movimiento {
+	flex-direction: column;
+	text-align: center;
+	max-width: 7000px;
+	margin: 0 auto;
+	padding: 100px 0;
+}
+#movimiento .movimiento-top {
+	max-width: 500px;
+	margin: 0 auto;
+}
+#movimiento .movimiento-bottom {
+	display: flex;
+	align-items: center;
+	justify-content: center;
+	flex-wrap: wrap;
+	margin-top: 0px;
+}
+#movimiento .movimiento-item {
+	flex-basis: 80%;
+	display: flex;
+	align-items: flex-start;
+	justify-content: center;
+	flex-direction: column;
+	padding: 30px;
+	border-radius: 10px;
+	margin: 10px 5%;
+	position: relative;
+	z-index: 1;
+	overflow: hidden;
+}
+#movimiento .movimiento-item::after {
+	content: '';
+	position: absolute;
+	left: 0;
+	top: 0;
+	height: 100%;
+	width: 100%;
+	opacity: 0.5;
+	z-index: -1;
+}
+#movimiento .movimiento-bottom .icon {
+	height: 20px;
+	width: 20px;
+	margin-bottom: 10px;
+}
+
+
+#movimiento .movimiento-item h2 {
+	font-size: 2rem;
+	color: white;
+	margin-bottom: 10px;
+	text-transform: uppercase;
+}
+#movimiento .movimiento-item p {
+	color: white;
+	text-align: left;
+}
+
+#movimiento .movimiento-item .btn {
+	width: 250px;
+	text-align: center;
 }
 
 /*opcines de vista*/
