@@ -335,3 +335,8 @@ header a:hover{
     height: 100%;
     object-fit: cover;
 }
+
+#map {
+    height: 500px;
+    width: 100%;
+}
