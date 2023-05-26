@@ -9,11 +9,12 @@ html {
 	font-family: 'Montserrat', sans-serif;
 	scroll-behavior: smooth;
     color: white;
+    background-color: rgb(230, 230, 230);;
 }
 
 
 h1{
-    color: rgb(255, 255, 255);
+    color: rgb(230, 230, 230);
     font-size: 3.5em;
 }
 
@@ -47,7 +48,7 @@ li{
 button{
     display: inline-block;
 	padding: 10px 30px;
-	color: white;
+	color: rgb(230, 230, 230);
 	background-color: transparent;
 	border: 2px solid rgb(39, 2, 53);
 	font-size: 2rem;
@@ -68,10 +69,11 @@ button:hover{
 .container{
     max-width: 1400px;
     margin: auto;
+
 }
 
 header{
-    background-color: rgb(255, 255, 255);
+    background-color: rgb(230, 230, 230);
 }
 
  header .logo{
@@ -107,8 +109,6 @@ header a:hover{
 }
 
 
-
-
 /*pag prin*/
 
 #intro{
@@ -118,7 +118,7 @@ header a:hover{
     justify-content: center;
     text-align: center;
     flex-direction: column;
-    background-color: rgb(255, 255, 255);
+    background-color: rgb(230, 230, 230);
     height: 90vh;
     background: url(Imagenes/Varios.png) no-repeat center center fixed; 
     background-size: cover;
@@ -245,7 +245,7 @@ header a:hover{
 
       .wrapper .icon {
         position: relative;
-        background: #fff;
+        background: rgb(230, 230, 230);
         border-radius: 50%;
         margin: 10px;
         width: 50px;
@@ -264,7 +264,7 @@ header a:hover{
         position: absolute;
         top: 0;
         font-size: 14px;
-        background: #fff;
+        background: rgb(230, 230, 230);
         color: #fff;
         padding: 5px 8px;
         border-radius: 5px;
@@ -279,7 +279,7 @@ header a:hover{
         content: "";
         height: 8px;
         width: 8px;
-        background: #fff;
+        background: rgb(230, 230, 230);
         bottom: -3px;
         left: 50%;
         transform: translate(-50%) rotate(45deg);
