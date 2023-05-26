@@ -9,13 +9,13 @@ html {
 	font-family: 'Montserrat', sans-serif;
 	scroll-behavior: smooth;
     color: white;
-    background-color: rgb(230, 230, 230);;
+    background-color: rgb(21, 0, 32);
 }
 
 
 h1{
-    color: rgb(230, 230, 230);
-    font-size: 3.5em;
+    color: rgb(21, 0, 32);
+    font-size: 2.7em;
 }
 
 h2{
@@ -73,7 +73,7 @@ button:hover{
 }
 
 header{
-    background-color: rgb(230, 230, 230);
+    background-color: rgb(255, 255, 255);
 }
 
  header .logo{
@@ -118,13 +118,12 @@ header a:hover{
     justify-content: center;
     text-align: center;
     flex-direction: column;
-    background-color: rgb(230, 230, 230);
     height: 90vh;
     background: url(Imagenes/Varios.png) no-repeat center center fixed; 
     background-size: cover;
  }
 
-#intro h2{
+#intro h1{
     font-size: 7vw;
 }
  #intro button{
@@ -245,7 +244,6 @@ header a:hover{
 
       .wrapper .icon {
         position: relative;
-        background: rgb(230, 230, 230);
         border-radius: 50%;
         margin: 10px;
         width: 50px;
@@ -264,7 +262,6 @@ header a:hover{
         position: absolute;
         top: 0;
         font-size: 14px;
-        background: rgb(230, 230, 230);
         color: #fff;
         padding: 5px 8px;
         border-radius: 5px;
@@ -279,7 +276,6 @@ header a:hover{
         content: "";
         height: 8px;
         width: 8px;
-        background: rgb(230, 230, 230);
         bottom: -3px;
         left: 50%;
         transform: translate(-50%) rotate(45deg);
