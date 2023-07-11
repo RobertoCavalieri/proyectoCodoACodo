@@ -15,7 +15,7 @@
   <header>
     <div class="container">
         <a class="logo">
-            <img src="Imagenes/Logo.png" width="150" alt="">
+            <img src="Imagenes/LogoB.png" width="150" alt="">
         </a>
             <nav>
               <a href="index.html">HOME</a>
@@ -37,20 +37,22 @@
       <thead>
         <tr>
           <th>Código</th>
+          <th>Nombre</th>
           <th>Descripción</th>
           <th>Cantidad</th>
-          <th align="right">Precio</th>
+          <th>Precio</th>
           <th>Acciones</th>
         </tr>
       </thead>
       <tbody>
         <tr v-for="producto in productos">
           <td>{{ producto.codigo }}</td>
+          <td>{{ producto.nombre }}</td>
           <td>{{ producto.descripcion }}</td>
-          <td align="right">{{ producto.cantidad }}</td>
-          <td align="right">{{ producto.precio }}</td>
+          <td >{{ producto.cantidad }}</td>
+          <td>{{ producto.precio }}</td>
           <td>
-            <button @click="eliminarProducto(producto)">Eliminar</button>
+            <button class="button-admin" @click="eliminarProducto(producto)">Eliminar</button>
           </td>
         </tr>
       </tbody>

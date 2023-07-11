@@ -3,8 +3,6 @@ from flask import Flask, jsonify, request, send_file
 from flask_cors import CORS
 
 DATABASE = "inventario.db"
-CONTRASEÑA = "1234"
-
 
 def get_db_connection():  # función para establecer conexión con la base de datos, hacer consultas y transacciones
     print("Conectando...")
