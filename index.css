@@ -538,14 +538,31 @@ textarea {
 .button-admin {
     margin: auto;
     font-size: 0.8rem;
+    background-color: rgb(24, 1, 32);
+    border: 2px solid rgb(39, 2, 53);
 
+}
+
+.button-admin:hover{
+    color: white;
+	background-color: rgb(38, 2, 53);
 }
 
 .button-menuadmin {
     margin: 10px;
     font-size: 1.2rem;
     width: 400px;
+    background-color: rgb(24, 1, 32);
+    border: 2px solid rgb(39, 2, 53);
 }
+
+
+.button-menuadmin:hover{
+    color: white;
+	background-color: rgb(38, 2, 53);
+}
+
+/* SECCION CONTENIDO */
 
 td {
     text-align: center;
