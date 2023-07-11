@@ -3,8 +3,6 @@ from flask import Flask, jsonify, request, send_file
 from flask_cors import CORS
 
 DATABASE = "inventario.db"
-CONTRASEÑA = "1234"
-
 
 def get_db_connection():  # función para establecer conexión con la base de datos, hacer consultas y transacciones
     print("Conectando...")
@@ -96,7 +94,8 @@ class Inventario:
         productos = []
         for row in rows:
             codigo, descripcion, cantidad, precio, nombre = row
-            producto = {'codigo': codigo, 'descripcion': descripcion, 'cantidad': cantidad, 'precio': precio, 'nombre': nombre}
+            producto = {'codigo': codigo, 'descripcion': descripcion, 'cantidad': cantidad, 'precio': precio,
+                        'nombre': nombre}
             productos.append(producto)
         return jsonify(productos), 200
 
@@ -122,7 +121,7 @@ class Carrito:
     # método que verifica la existencia y disponibilidad del producto en el inventario, si existe y la cantidad
     # disponible es suficiente se agrega al carrito, se actualiza la lista items y se actualiza la cantidad
     # disponible en la BBDD. Si no cumple con algunas de las dos condiciones, se informa y retorna False
-    def agregar(self, codigo, cantidad, inventario):
+    def agregar(self, codigo, cantidad, inventario, nombre):
         producto = inventario.consultar_producto(codigo)
         if producto is None:
             return jsonify({'message': 'El producto no existe.'}), 404
@@ -138,7 +137,7 @@ class Carrito:
                 self.conexion.commit()
                 return jsonify({'message': 'Producto agregado al carrito correctamente.'}), 200
 
-        nuevo_item = Producto(codigo, producto.descripcion, cantidad, producto.precio)
+        nuevo_item = Producto(codigo, producto.descripcion, cantidad, producto.precio, producto.nombre)
         self.items.append(nuevo_item)
         sql = f'UPDATE productos SET cantidad = cantidad - {cantidad} WHERE codigo = {codigo};'
         self.cursor.execute(sql)
@@ -148,7 +147,7 @@ class Carrito:
     # método que quita según el argumento recibido en cantidad un producto. 1ro busca el producto, si lo encuentra
     # verifica si la cantidad en válida, si es válida se actualiza la cantidad del producto en el carrito y en la
     # BBDD. Si no se encuentra imprime un msj y retorna False
-    def quitar(self, codigo, cantidad, inventario):
+    def quitar(self, codigo, cantidad, inventario, nombre):
         for item in self.items:
             if item.codigo == codigo:
                 if cantidad > item.cantidad:
@@ -169,7 +168,7 @@ class Carrito:
     def mostrar(self):
         productos_carrito = []
         for item in self.items:
-            producto = {'codigo': item.codigo, 'descripcion': item.descripcion, 'cantidad': item.cantidad,
+            producto = {'codigo': item.codigo, 'nombre': item.nombre, 'cantidad': item.cantidad,
                         'precio': item.precio}
             productos_carrito.append(producto)
         return jsonify(productos_carrito), 200
@@ -235,14 +234,14 @@ def agregar_carrito():
     nombre = request.json.get('nombre')
     cantidad = request.json.get('cantidad')
     inventario = Inventario()
-    return carrito.agregar(codigo, nombre, cantidad, inventario)
+    return carrito.agregar(codigo, cantidad, inventario, nombre)
 
 
 @app.route('/carrito', methods=['DELETE'])
 def quitar_carrito():
     codigo = request.json.get('codigo')
-    nombre = request.json.get('nombre')
     cantidad = request.json.get('cantidad')
+    nombre = request.json.get('nombre')
     inventario = Inventario()
     return carrito.quitar(codigo, cantidad, inventario, nombre)
 
@@ -250,15 +249,6 @@ def quitar_carrito():
 @app.route('/carrito', methods=['GET'])
 def obtener_carrito():
     return carrito.mostrar()
-
-
-@app.route('/altas', methods=['POST'])
-def verificar_contrasena():
-    contrasena = request.json.get('contrasena')
-    if contrasena == CONTRASEÑA:  # Verifica la contraseña ingresada con la contraseña generada en Python
-        return send_file('altas.html')
-    else:
-        return jsonify({'message': 'Contraseña incorrecta.'}), 401
 
 
 # Finalmente, si estamos ejecutando este archivo, lanzamos app.
