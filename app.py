@@ -64,7 +64,7 @@ class Inventario:
         producto_existente = self.consultar_producto(codigo)
         if producto_existente:
             return jsonify({'message': 'Ya existe un producto con ese código'}), 400
-        sql = f"INSERT INTO productos VALUES ({codigo}, '{descripcion}', {cantidad}, {precio}, {nombre});"
+        sql = f"INSERT INTO productos VALUES ({codigo}, '{descripcion}', {cantidad}, {precio}, '{nombre}');"
         self.cursor.execute(sql)
         self.conexion.commit()
         return jsonify({'message': 'Producto agregado correctamente.'}), 200
@@ -83,7 +83,7 @@ class Inventario:
         producto = self.consultar_producto(codigo)
         if producto:
             producto.modificar(nuevo_nombre, nueva_descripcion, nueva_cantidad, nuevo_precio)
-            sql = f'UPDATE productos SET descripcion = "{nueva_descripcion}", nombre ={nuevo_nombre} cantidad = {nueva_cantidad}, precio = {nuevo_precio} WHERE codigo = {codigo};'
+            sql = f'UPDATE productos SET descripcion = "{nueva_descripcion}", nombre ="{nuevo_nombre}", cantidad = {nueva_cantidad}, precio = {nuevo_precio} WHERE codigo = {codigo};'
             self.cursor.execute(sql)
             self.conexion.commit()
             return jsonify({'message': 'Producto modificado correctamente.'}), 200
