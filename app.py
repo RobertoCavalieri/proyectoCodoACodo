@@ -22,7 +22,8 @@ def create_table():
             codigo INTEGER PRIMARY KEY,
             descripcion TEXT NOT NULL,
             cantidad INTEGER NOT NULL,
-            precio REAL NOT NULL
+            precio REAL NOT NULL,
+            nombre TEXT NOT NULL
         ) ''')
     conn.commit()
     cursor.close()
@@ -40,16 +41,18 @@ create_database()
 
 # esta clase no se cambia porque sus instancias se usan en la clase Inventario
 class Producto:
-    def __init__(self, codigo, descripcion, cantidad, precio):
+    def __init__(self, codigo, descripcion, cantidad, precio, nombre):
         self.codigo = codigo
         self.descripcion = descripcion
         self.cantidad = cantidad
         self.precio = precio
+        self.nombre = nombre
 
-    def modificar(self, nueva_descripcion, nueva_cantidad, nuevo_precio):
+    def modificar(self, nueva_descripcion, nueva_cantidad, nuevo_precio, nuevo_nombre):
         self.descripcion = nueva_descripcion
         self.cantidad = nueva_cantidad
         self.precio = nuevo_precio
+        self.nombre = nuevo_nombre
 
 
 class Inventario:
@@ -57,11 +60,11 @@ class Inventario:
         self.conexion = get_db_connection()
         self.cursor = self.conexion.cursor()
 
-    def agregar_producto(self, codigo, descripcion, cantidad, precio):
+    def agregar_producto(self, codigo, descripcion, cantidad, precio, nombre):
         producto_existente = self.consultar_producto(codigo)
         if producto_existente:
             return jsonify({'message': 'Ya existe un producto con ese código'}), 400
-        sql = f"INSERT INTO productos VALUES ({codigo}, '{descripcion}', {cantidad}, {precio});"
+        sql = f"INSERT INTO productos VALUES ({codigo}, '{descripcion}', {cantidad}, {precio}, {nombre});"
         self.cursor.execute(sql)
         self.conexion.commit()
         return jsonify({'message': 'Producto agregado correctamente.'}), 200
@@ -71,16 +74,16 @@ class Inventario:
         self.cursor.execute(sql)
         row = self.cursor.fetchone()
         if row:
-            codigo, descripcion, cantidad, precio = row
-            return Producto(codigo, descripcion, cantidad, precio)
+            codigo, descripcion, cantidad, precio, nombre = row
+            return Producto(codigo, descripcion, cantidad, precio, nombre)
         return None
 
     # método para modificar los datos de un producto en la BBDD
-    def modificar_producto(self, codigo, nueva_descripcion, nueva_cantidad, nuevo_precio):
+    def modificar_producto(self, codigo, nueva_descripcion, nueva_cantidad, nuevo_precio, nuevo_nombre):
         producto = self.consultar_producto(codigo)
         if producto:
-            producto.modificar(nueva_descripcion, nueva_cantidad, nuevo_precio)
-            sql = f'UPDATE productos SET descripcion = "{nueva_descripcion}", cantidad = {nueva_cantidad}, precio = {nuevo_precio} WHERE codigo = {codigo};'
+            producto.modificar(nuevo_nombre, nueva_descripcion, nueva_cantidad, nuevo_precio)
+            sql = f'UPDATE productos SET descripcion = "{nueva_descripcion}", nombre ={nuevo_nombre} cantidad = {nueva_cantidad}, precio = {nuevo_precio} WHERE codigo = {codigo};'
             self.cursor.execute(sql)
             self.conexion.commit()
             return jsonify({'message': 'Producto modificado correctamente.'}), 200
@@ -92,8 +95,8 @@ class Inventario:
         rows = self.cursor.fetchall()
         productos = []
         for row in rows:
-            codigo, descripcion, cantidad, precio = row
-            producto = {'codigo': codigo, 'descripcion': descripcion, 'cantidad': cantidad, 'precio': precio}
+            codigo, descripcion, cantidad, precio, nombre = row
+            producto = {'codigo': codigo, 'descripcion': descripcion, 'cantidad': cantidad, 'precio': precio, 'nombre': nombre}
             productos.append(producto)
         return jsonify(productos), 200
 
@@ -109,13 +112,16 @@ class Inventario:
 
 
 class Carrito:
-    # contructor para inicializar un atributo de clase con una lista vacía, establecer la conexión a la BBDD AqLite y crear un curso
+    # contructor para inicializar un atributo de clase con una lista vacía, establecer la conexión a la BBDD AqLite y
+    # crear un curso
     def __init__(self):
         self.conexion = get_db_connection()
         self.cursor = self.conexion.cursor()
         self.items = []
 
-    # método que verifica la existencia y disponibilidad del producto en el inventario, si existe y la cantidad disponible es suficiente se agrega al carrito, se actualiza la lista items y se actualiza la cantidad disponible en la BBDD. Si no cumple con algunas de las dos condiciones, se informa y retorna False
+    # método que verifica la existencia y disponibilidad del producto en el inventario, si existe y la cantidad
+    # disponible es suficiente se agrega al carrito, se actualiza la lista items y se actualiza la cantidad
+    # disponible en la BBDD. Si no cumple con algunas de las dos condiciones, se informa y retorna False
     def agregar(self, codigo, cantidad, inventario):
         producto = inventario.consultar_producto(codigo)
         if producto is None:
@@ -139,7 +145,9 @@ class Carrito:
         self.conexion.commit()
         return jsonify({'message': 'Producto agregado al carrito correctamente'}), 200
 
-    # método que quita según el argumento recibido en cantidad un producto. 1ro busca el producto, si lo encuentra verifica si la cantidad en válida, si es válida se actualiza la cantidad del producto en el carrito y en la BBDD. Si no se encuentra imprime un msj y retorna False
+    # método que quita según el argumento recibido en cantidad un producto. 1ro busca el producto, si lo encuentra
+    # verifica si la cantidad en válida, si es válida se actualiza la cantidad del producto en el carrito y en la
+    # BBDD. Si no se encuentra imprime un msj y retorna False
     def quitar(self, codigo, cantidad, inventario):
         for item in self.items:
             if item.codigo == codigo:
@@ -181,7 +189,8 @@ def obtener_producto(codigo):
             'codigo': producto.codigo,
             'descripcion': producto.descripcion,
             'cantidad': producto.cantidad,
-            'precio': producto.precio
+            'precio': producto.precio,
+            'nombre': producto.nombre
         }), 200
     return jsonify({'message': 'Producto no encontrado.'}), 404
 
@@ -197,7 +206,8 @@ def agregar_producto():
     descripcion = request.json.get('descripcion')
     cantidad = request.json.get('cantidad')
     precio = request.json.get('precio')
-    return inventario.agregar_producto(codigo, descripcion, cantidad, precio)
+    nombre = request.json.get('nombre')
+    return inventario.agregar_producto(codigo, descripcion, cantidad, precio, nombre)
 
 
 @app.route('/productos/<int:codigo>', methods=['PUT'])
@@ -205,7 +215,8 @@ def modificar_producto(codigo):
     nueva_descripcion = request.json.get('descripcion')
     nueva_cantidad = request.json.get('cantidad')
     nuevo_precio = request.json.get('precio')
-    return inventario.modificar_producto(codigo, nueva_descripcion, nueva_cantidad, nuevo_precio)
+    nuevo_nombre = request.json.get('nombre')
+    return inventario.modificar_producto(codigo, nueva_descripcion, nueva_cantidad, nuevo_precio, nuevo_nombre)
 
 
 @app.route('/productos/<int:codigo>', methods=['DELETE'])
@@ -221,17 +232,19 @@ def index():
 @app.route('/carrito', methods=['POST'])
 def agregar_carrito():
     codigo = request.json.get('codigo')
+    nombre = request.json.get('nombre')
     cantidad = request.json.get('cantidad')
     inventario = Inventario()
-    return carrito.agregar(codigo, cantidad, inventario)
+    return carrito.agregar(codigo, nombre, cantidad, inventario)
 
 
 @app.route('/carrito', methods=['DELETE'])
 def quitar_carrito():
     codigo = request.json.get('codigo')
+    nombre = request.json.get('nombre')
     cantidad = request.json.get('cantidad')
     inventario = Inventario()
-    return carrito.quitar(codigo, cantidad, inventario)
+    return carrito.quitar(codigo, cantidad, inventario, nombre)
 
 
 @app.route('/carrito', methods=['GET'])

@@ -1,7 +1,6 @@
 import sqlite3
 from flask import Flask, jsonify
 
-
 # Verificar la versión de SQLite
 print(sqlite3.sqlite_version)
 DATABASE = 'inventario.db'
@@ -37,16 +36,18 @@ def create_database():
 
 
 class Producto:
-    def __init__(self, codigo, descripcion, cantidad, precio):
+    def __init__(self, codigo, descripcion, cantidad, precio, nombre):
+        self.nombre = nombre
         self.codigo = codigo
         self.descripcion = descripcion
         self.cantidad = cantidad
         self.precio = precio
 
-    def modificar(self, nueva_descripcion, nueva_cantidad, nuevo_precio):
+    def modificar(self, nuevo_nombre, nueva_descripcion, nueva_cantidad, nuevo_precio):
         self.descripcion = nueva_descripcion
         self.cantidad = nueva_cantidad
         self.precio = nuevo_precio
+        self.nombre = nuevo_nombre
 
 
 class Inventario:
@@ -54,13 +55,13 @@ class Inventario:
         self.conexion = get_db_connection()
         self.cursor = self.conexion.cursor()
 
-    def agregar_producto(self, codigo, descripcion, cantidad, precio):
+    def agregar_producto(self, codigo, descripcion, cantidad, precio, nombre):
         producto_existente = self.consultar_producto(codigo)
         if producto_existente:
             return jsonify({'message': 'Ya existe un producto con ese código.'}), 400
-        nuevo_producto = Producto(codigo, descripcion, cantidad, precio)
-        sql = 'INSERT INTO productos VALUES (?, ?, ?, ?)'
-        self.cursor.execute(sql, (codigo, descripcion, cantidad, precio))
+        nuevo_producto = Producto(codigo, descripcion, cantidad, precio, nombre)
+        sql = 'INSERT INTO productos VALUES (?, ?, ?, ?, ?)'
+        self.cursor.execute(sql, (codigo, descripcion, cantidad, precio, nombre))
         self.conexion.commit()
         return jsonify({'message': 'Producto agregado correctamente.'}), 200
 
@@ -69,15 +70,16 @@ class Inventario:
         self.cursor.execute(sql, (codigo,))
         row = self.cursor.fetchone()
         if row:
-            return Producto(row['codigo'], row['descripcion'], row['cantidad'], row['precio'])
+            return Producto(row['codigo'], row['descripcion'], row['cantidad'], row['precio'], row['nombre'])
+
         return None
 
-    def modificar_producto(self, codigo, nueva_descripcion, nueva_cantidad, nuevo_precio):
+    def modificar_producto(self, codigo, nueva_descripcion, nueva_cantidad, nuevo_precio, nuevo_nombre):
         producto = self.consultar_producto(codigo)
         if producto:
-            producto.modificar(nueva_descripcion, nueva_cantidad, nuevo_precio)
-            sql = 'UPDATE productos SET descripcion = ?, cantidad = ?, precio = ? WHERE codigo = ?'
-            self.cursor.execute(sql, (nueva_descripcion, nueva_cantidad, nuevo_precio, codigo))
+            producto.modificar(nuevo_nombre, nueva_descripcion, nueva_cantidad, nuevo_precio)
+            sql = 'UPDATE productos SET nombre = ?, descripcion = ?, cantidad = ?, precio = ? WHERE codigo = ?'
+            self.cursor.execute(sql, (nuevo_nombre, nueva_descripcion, nueva_cantidad, nuevo_precio, codigo))
             self.conexion.commit()
             return True
         return False
@@ -101,7 +103,7 @@ class Carrito:
     def __init__(self):
         self.items = []
 
-    def agregar(self, codigo, cantidad, inventario):
+    def agregar(self, codigo, cantidad, inventario, nombre):
         producto = inventario.consultar_producto(codigo)
 
         if producto is None:
@@ -164,15 +166,17 @@ def obtener_producto(codigo):
         return jsonify({
             'codigo': producto.codigo,
             'descripcion': producto.descripcion,
+            'nombre': producto.nombre,
             'cantidad': producto.cantidad,
             'precio': producto.precio
+
         }), 200
     return jsonify({'message': 'Producto no encontrado.'}), 404
 
 
 @app.route('/carrito', methods=['GET'])
 def obtener_carrito():
-    return carrito.mostrar()
+    return jsonify(carrito.mostrar())
 
 
 if __name__ == '__main__':
