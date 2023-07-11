@@ -112,7 +112,7 @@ header a:hover{
     justify-content: center;
     text-align: center;
     flex-direction: column;
-    height: 90vh;
+    height: 80vh;
     background: url(Imagenes/Varios.png) no-repeat center center fixed; 
     background-size: cover;
  }
@@ -435,7 +435,7 @@ table {
     margin: 0 auto;
     padding: 20px;
     background-color: rgb(0, 0, 0);
-    border: 1px solid lightslategray;
+    border: 1px solid rgb(38, 2, 53);
     border-radius: 5px;
 }
 
@@ -456,7 +456,7 @@ textarea {
     width: 90%;
     padding: 10px;
     margin-bottom: 10px;
-    border: 1px solid #cccccc;
+    border: 1px solid rgb(38, 2, 53);
     border-radius: 5px;
 }
 
@@ -467,7 +467,7 @@ textarea {
     margin: 0 auto;
     padding: 20px;
     background-color: rgb(0, 0, 0);
-    border: 1px solid lightslategray;
+    border: 1px solid rgb(38, 2, 53);
     border-radius: 5px;
 }
 
@@ -476,7 +476,7 @@ textarea {
     margin: 0 auto;
     padding: 20px;
     background-color: rgb(0, 0, 0);
-    border: 1px solid lightslategray;
+    border: 1px solid rgb(38, 2, 53);
     border-radius: 5px;
 }
 
@@ -745,14 +745,19 @@ footer{
     border: 1px solid rgb(31, 0, 43);
     background-color: rgb(11, 0, 15);
     display: flex;
-    align-items: center;
     text-align: justify;
-    
+   
 
+}
+
+#heading{
+    text-align: center;
+    font-size: 1.2rem;
 }
     
 .contenido-tarjetas {
     align-items: center;
     text-align: center;
+    
 }
 
