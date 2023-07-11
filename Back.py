@@ -21,7 +21,8 @@ def create_table():
             codigo INTEGER PRIMARY KEY,
             descripcion TEXT NOT NULL,
             cantidad INTEGER NOT NULL,
-            precio REAL NOT NULL
+            precio REAL NOT NULL,
+            nombre TEXT NOT NULL
         )
     ''')
     conn.commit()
