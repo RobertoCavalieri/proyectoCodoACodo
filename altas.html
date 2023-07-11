@@ -22,32 +22,42 @@
                     <a href="carrito.html">PLANES</a>
                     <a href="admin.html">ADMINISTRAR</a>
                 </nav>
-                <a><h1>Agregar Plan de Subscripción al Inventario</h1></a>
+
     </div>
  
     </header>
 
+    <section class="admin-container">
 
-    <form id="formulario">
-        <label for="codigo">Código:</label>
-        <input type="text" id="codigo" name="codigo" required><br>
+        <h2>ALTA DE PRODUCTO</h2>
 
-        <label for="nombre">Nombre:</label>
-        <input type="text" id="nombre" name="descripcion" required><br>
+        <p>Completa los campos a continuación para dar de alta un nuevo producto. </p>
+    
+        <div>
+            <form id="formulario">
+                <label for="codigo">Código:</label>
+                <input type="text" id="codigo" name="codigo" required><br>
+        
+                <label for="nombre">Nombre:</label>
+                <input type="text" id="nombre" name="descripcion" required><br>
+        
+                <label for="descripcion">Descripción:</label>
+                <input type="text" id="descripcion" name="descripcion" required><br>
+        
+                <label for="cantidad">Cantidad:</label>
+                <input type="number" id="cantidad" name="cantidad" min="0" step="1" pattern="[0-9]+" required><br>
+        
+                <label for="precio">Precio:</label>
+                <input type="number" step="0.01" id="precio" name="precio" min="0" required><br>
+        
+        
+                <button class="button-admin" type="button" onclick="confirmarAgregar()">Agregar Producto</button>
+            </form>
+        </div>
+    </section>
+    
 
-        <label for="descripcion">Descripción:</label>
-        <input type="text" id="descripcion" name="descripcion" required><br>
 
-        <label for="cantidad">Cantidad:</label>
-        <input type="number" id="cantidad" name="cantidad" min="0" step="1" pattern="[0-9]+" required><br>
-
-        <label for="precio">Precio:</label>
-        <input type="number" step="0.01" id="precio" name="precio" min="0" required><br>
-
-
-        <button type="button" onclick="confirmarAgregar()">Agregar Producto</button>
-        <a href="index.html">Menu principal</a>
-    </form>
     <script>
         const URL = "https://robertocavalieri.pythonanywhere.com/";
 

@@ -531,3 +531,21 @@ input[type="submit"]:hover {
     );
 
     }
+
+.admin-container {
+
+    font-size: 1.2rem;
+    font-weight: 300;
+    color: rgb(255, 255, 255);
+    margin-bottom: 10px;
+    text-transform: uppercase;
+    letter-spacing: 0.2rem;
+    text-align: center;
+    
+    }
+
+.button-admin {
+
+    font-size: 0.8rem;
+
+}

@@ -35,8 +35,8 @@
       <p>Selecciona el plan que prefieras. </p>
           <div>
                       <div v-for="producto in productos" :key="producto.codigo" class="planes"> 
-                              <h3>{{ producto.descripcion }}</h3>
-                              <p>Codigo: {{ producto.codigo}}</p>
+                              <h3>{{ producto.nombre }}</h3>
+                              <p>{{ producto.descripcion}}</p>
                               <button @click="agregarAlCarrito(producto)" class="carrito">&nbsp;&nbsp;<b>+</b>&nbsp;&nbsp;</button>
                               <button @click="restarDelCarrito(producto)" class="carrito">&nbsp;&nbsp;<b>-</b>&nbsp;&nbsp;</button>
                               <h3>$ {{ producto.precio }}</h3>
@@ -58,7 +58,7 @@
               <tbody>
                 <tr v-for="item in carrito" :key="item.codigo">
                   <td>{{ item.codigo }}</td>
-                  <td>{{ item.descripcion }}</td>
+                  <td>{{ item.nombre }}</td>
                   <td align="right">{{ item.cantidad }}</td>
                   <td align="right">&nbsp; &nbsp; {{ item.precio }}</td>
                   <td align="right">&nbsp; &nbsp; {{ subtotal(item) }}</td>
