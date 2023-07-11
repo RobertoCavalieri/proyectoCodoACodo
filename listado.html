@@ -17,7 +17,7 @@
     <header>
         <div class="container">
             <a class="logo">
-                <img src="Imagenes/Logo.png" width="150" alt="">
+                <img src="Imagenes/Logob.png" width="150" alt="">
             </a>
                 <nav>
                   <a href="index.html">HOME</a>
@@ -39,9 +39,10 @@
                 <thead>
                     <tr>
                         <th>Código</th>
+                        <th>Nombre</th>
                         <th>Descripción</th>
                         <th>Cantidad</th>
-                        <th align="right">Precio</th>
+                        <th>Precio</th>
                     </tr>
                 </thead>
                 <tbody id="tablaProductos">
@@ -49,8 +50,9 @@
             </table>
         </div>
     </section>
-
-
+    <footer>
+        <p> Codo a Codo 2023 - 1° Cuatrimestre</p>
+    </footer>
     <script>
         //const URL = "http://127.0.0.1:5000/"
         const URL = "https://robertocavalieri.pythonanywhere.com/"
@@ -73,9 +75,9 @@
                 data.forEach(function (producto) {
                     var fila = document.createElement('tr')
                     fila.innerHTML = '<td>' + producto.codigo + '</td>' +
-                        '<td>' + producto.descripcion + '</td>' +
-                        '<td align="right">' + producto.cantidad + '</td>' +
-                        '<td align="right">&nbsp; &nbsp;&nbsp; &nbsp;' + producto.precio + '</td>'
+                        '<td>' + producto.nombre + '</td>' + producto.descripcion + '</td>' +
+                        '<td>' + producto.cantidad + '</td>' +
+                        '<td>&nbsp; &nbsp;&nbsp; &nbsp;' + producto.precio + '</td>'
                     tablaProductos.appendChild(fila)
                 })
             })
@@ -85,7 +87,5 @@
             })
     </script>
 </body>
-<footer>
-    <p> Codo a Codo 2023 - 1° Cuatrimestre</p>
-</footer>
+
 </html>

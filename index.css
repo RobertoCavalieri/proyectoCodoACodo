@@ -8,7 +8,6 @@ html {
 	font-size: 15px;
 	font-family: 'Montserrat', sans-serif;
 	scroll-behavior: smooth;
-    color: white;
     background-color: rgb(21, 0, 32);
 }
 
@@ -31,7 +30,6 @@ h3{
 p {
 	color: rgb(255, 255, 255);
 	font-size: 1.2rem;
-	margin-top: 5px;
 	line-height: 2.5rem;
 	font-weight: 300;
 	letter-spacing: 0.05rem;
@@ -62,27 +60,21 @@ button{
 
 button:hover{
     color: white;
-	background-color: rgb(89, 28, 116);
-}
-
-
-.container{
-    max-width: 1400px;
-    margin: auto;
-
+	background-color: rgb(38, 2, 53);
 }
 
 header{
-    background-color: rgb(255, 255, 255);
+    background-color: rgb(0, 0, 5);
+
 }
 
  header .logo{
-    margin: 0;
+    margin: 10ps;
     padding: 25px,30px;
     font-weight: bold;
-    color: blueviolet;
     font-size: 1.45;
 }
+
 header .container{
     display: flex;
     flex-direction: column;
@@ -90,29 +82,30 @@ header .container{
 
 }
 
-header .nav{
-
+nav{
     display: flex;
     flex-direction: inline;
     text-align: center;
-    padding-bottom: 25px;
+    padding-bottom: 15px;
+    color: #ffffff;
 }
 
 header a{
     padding: 5px 12px;
     text-decoration: none;
     font-weight: bold;
-    color: black;
+    color: white;
+    
 }
 header a:hover{
-    color: blueviolet; /*cuando pones el mouse arriba se pone de ese color*/
+    color: blueviolet; 
 }
 
 
 /*pag prin*/
 
 #intro{
-    color: white;
+    color: #ffffff;
     display: flex;
     align-items: center;
     justify-content: center;
@@ -123,6 +116,15 @@ header a:hover{
     background-size: cover;
  }
 
+ .button-intro {
+    margin: 20px;
+    background-color: rgb(38, 2, 53);
+
+}
+
+.button-intro:hover{
+	background-color: rgb(81, 6, 114);
+}
 #intro h1{
     font-size: 7vw;
 }
@@ -131,10 +133,15 @@ header a:hover{
 }
 
 
-#inicio {
-
+#mapa {
+    padding: auto;
+    margin: auto;
     color: white;
     background-color: rgb(0, 0, 0);
+}
+
+#mapa .container{
+    padding: 100px 0px;
 }
 
 
@@ -146,7 +153,7 @@ header a:hover{
     font-size: 1.2rem;
 	font-weight: 300;
 	color: rgb(255, 255, 255);
-	margin-bottom: 10px;
+
 	text-transform: uppercase;
 	letter-spacing: 0.2rem;
 	text-align: center;
@@ -164,7 +171,7 @@ header a:hover{
     /*como hacer para que esten de a tres*/
 
     #nuestros-programas .carta{
-         background-position: center center;
+        background-position: center center;
         background-size: cover;
         padding: 50px;
         margin: 20px;
@@ -207,24 +214,23 @@ header a:hover{
         background-color: rgb(0, 0, 0);
         font-size: 1.2rem;
         font-weight: 300;
-        margin-bottom: 10px;
         text-transform: uppercase;
         letter-spacing: 0.2rem;
         color: rgb(255, 255, 255);
         text-align: center;
         }
 
-        #caracteristicas .container{
-           padding: 100px 0px;
-        }
-
+    #caracteristicas .container{
+        padding: 100px 0px;
+    }
 
      footer{
         background-color: rgb(0, 0, 0);
     }
     footer p{
         margin: 0;
-        color: rgb(0, 0, 0);
+        color: rgb(255, 255, 255);
+        text-align: center;
     }
     footer .container{
         height: 150px;
@@ -340,8 +346,9 @@ header a:hover{
     
 }
 .container {
-    margin-top: 50px;
     text-align: center;
+    background-color: #000000;
+    margin: 1px;
 }
 
 .wrapper {
@@ -455,21 +462,6 @@ textarea {
 }
 
 
-input[type="submit"] {
-    padding: 10px;
-    background-color: #007bff;
-    color: #ffffff;
-    border: none;
-    border-radius: 5px;
-    cursor: pointer;
-}
-
-
-input[type="submit"]:hover {
-    background-color: #0056b3;
-}
-
-
 
 #formulario {
     max-width: 400px;
@@ -537,7 +529,7 @@ input[type="submit"]:hover {
     font-size: 1.2rem;
     font-weight: 300;
     color: rgb(255, 255, 255);
-    margin-bottom: 10px;
+    margin-bottom: 250px;
     text-transform: uppercase;
     letter-spacing: 0.2rem;
     text-align: center;
@@ -545,7 +537,20 @@ input[type="submit"]:hover {
     }
 
 .button-admin {
-
+    margin: auto;
     font-size: 0.8rem;
 
 }
+
+.button-menuadmin {
+    margin: 10px;
+    font-size: 1.2rem;
+    width: 400px;
+}
+
+td {
+    text-align: center;
+}
+
+
+

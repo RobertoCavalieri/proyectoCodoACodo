@@ -17,7 +17,7 @@
   <header>
     <div class="container">
         <a class="logo">
-            <img src="Imagenes/Logo.png" width="150" alt="">
+            <img src="Imagenes/LogoB.png" width="150" alt="">
         </a>
             <nav>
               <a href="index.html">HOME</a>
@@ -72,13 +72,10 @@
           </div>
       
           <div v-if="!mostrarCarrito" class="contenedor-centrado">
-            <button @click="obtenerCarrito">Mostrar carrito</button>
+            <button class="button-menuadmin" @click="obtenerCarrito">Mostrar carrito</button>
           </div>
       
-      
-          <div class="contenedor-centrado">
-            <a href="index.html"><button>Menu principal</button></a>
-          </div>
+
           
   </div>
 </section>
@@ -177,9 +174,33 @@
     })
     planes.mount('#planes')
   </script>
-</body>
 <footer>
+  <div class="containerRedes">
+      <ul class="wrapper">
+          <li class="icon facebook">
+              <span class="tooltip">Facebook</span>
+              <span class="circle"><img src="Imagenes/FBicon.jpg"></span>
+              <span><i class="fab fa-facebook-f"></i></span>
+              <div class="popup">Red social en desarrollo</div> <!-- Cartel emergente -->
+          </li>
+          <li class="icon twitter">
+              <span class="tooltip">Twitter</span>
+              <span class="circle"><img src="Imagenes/TWicon.png"></span>
+              <span><i class="fab fa-twitter"></i></span>
+              <div class="popup">Red social en desarrollo</div> <!-- Cartel emergente -->
+          </li>
+          <li class="icon instagram">
+              <span class="tooltip">Instagram</span>
+              <span class="circle"><img src="Imagenes/IGicon.png"></span>
+              <span><i class="fab fa-instagram"></i></span>
+              <div class="popup">Red social en desarrollo</div> <!-- Cartel emergente -->
+          </li>
+      </ul>
+  </div>
+  <script src="script.js"></script>
   <p> Codo a Codo 2023 - 1° Cuatrimestre</p>
 </footer>
+</body>
+
 
 </html>
