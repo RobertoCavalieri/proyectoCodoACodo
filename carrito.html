@@ -13,73 +13,76 @@
 
 
 <body>
-  <div id="app">
-    <h1>Carrito de compras</h1>
-    <h3>Cinema.com</h3>
-    <table>
-      <thead>
-        <tr>
-          <th>Código</th>
-          <th>Descripción</th>
-          <th>Cantidad</th>
-          <th>Precio</th>
-          <th>Carrito</th>
-        </tr>
-      </thead>
-      <tbody>
-        <tr v-for="producto in productos" :key="producto.codigo">
-          <td>{{ producto.codigo }}</td>
-          <td>{{ producto.descripcion }}</td>
-          <td align="right">{{ producto.cantidad }}</td>
-          <td align="right">&nbsp; &nbsp; {{ producto.precio }}</td>
-          <td>
-            <button @click="agregarAlCarrito(producto)" class="carrito">&nbsp;&nbsp;<b>+</b>&nbsp;&nbsp;</button>
-            <button @click="restarDelCarrito(producto)" class="carrito">&nbsp;&nbsp;<b>-</b>&nbsp;&nbsp;</button>
-          </td>
-        </tr>
-      </tbody>
-    </table>
+
+  <header>
+    <div class="container">
+        <a class="logo">
+            <img src="Imagenes/Logo.png" width="150" alt="">
+        </a>
+            <nav>
+              <a href="index.html">HOME</a>
+                <a href="carrito.html">PLANES</a>
+                <a href="admin.html">ADMINISTRAR</a>
+            </nav>
+</div>
+
+</header>
 
 
-    <div v-if="mostrarCarrito">
-      <h3>Plan en el carrito:</h3>
-      <table>
-        <thead>
-          <tr>
-            <th>Código</th>
-            <th>Descripción</th>
-            <th>Cantidad</th>
-            <th>Precio</th>
-            <th>Subtotal</th>
-          </tr>
-        </thead>
-        <tbody>
-          <tr v-for="item in carrito" :key="item.codigo">
-            <td>{{ item.codigo }}</td>
-            <td>{{ item.descripcion }}</td>
-            <td align="right">{{ item.cantidad }}</td>
-            <td align="right">&nbsp; &nbsp; {{ item.precio }}</td>
-            <td align="right">&nbsp; &nbsp; {{ subtotal(item) }}</td>
-          </tr>
-          <tr>
-            <td colspan="4" align="right"><b>Total:</b></td>
-            <td align="right"><b>{{ totalPrecio }}</b></td>
-          </tr>
-        </tbody>
-      </table>
-    </div>
+<section id="planes">
+  <div class="nuestros-planes">
+      <h2>NUESTROS PLANES</h2>
+      <p>Selecciona el plan que prefieras. </p>
+          <div>
+                      <div v-for="producto in productos" :key="producto.codigo" class="planes"> 
+                              <h3>{{ producto.descripcion }}</h3>
+                              <p>Codigo: {{ producto.codigo}}</p>
+                              <button @click="agregarAlCarrito(producto)" class="carrito">&nbsp;&nbsp;<b>+</b>&nbsp;&nbsp;</button>
+                              <button @click="restarDelCarrito(producto)" class="carrito">&nbsp;&nbsp;<b>-</b>&nbsp;&nbsp;</button>
+                              <h3>$ {{ producto.precio }}</h3>
+                      </div>
+          </div>
 
-    <div v-if="!mostrarCarrito" class="contenedor-centrado">
-      <button @click="obtenerCarrito">Mostrar carrito</button>
-    </div>
-
-
-    <div class="contenedor-centrado">
-      <a href="index.html"><button>Menu principal</button></a>
-    </div>
-
-
+          <div v-if="mostrarCarrito">
+            <h3>Plan en el carrito:</h3>
+            <table>
+              <thead>
+                <tr>
+                  <th>Código</th>
+                  <th>Descripción</th>
+                  <th>Cantidad</th>
+                  <th>Precio</th>
+                  <th>Subtotal</th>
+                </tr>
+              </thead>
+              <tbody>
+                <tr v-for="item in carrito" :key="item.codigo">
+                  <td>{{ item.codigo }}</td>
+                  <td>{{ item.descripcion }}</td>
+                  <td align="right">{{ item.cantidad }}</td>
+                  <td align="right">&nbsp; &nbsp; {{ item.precio }}</td>
+                  <td align="right">&nbsp; &nbsp; {{ subtotal(item) }}</td>
+                </tr>
+                <tr>
+                  <td colspan="4" align="right"><b>Total:</b></td>
+                  <td align="right"><b>{{ totalPrecio }}</b></td>
+                </tr>
+              </tbody>
+            </table>
+          </div>
+      
+          <div v-if="!mostrarCarrito" class="contenedor-centrado">
+            <button @click="obtenerCarrito">Mostrar carrito</button>
+          </div>
+      
+      
+          <div class="contenedor-centrado">
+            <a href="index.html"><button>Menu principal</button></a>
+          </div>
+          
   </div>
+</section>
+
 
 
   <script>
@@ -87,7 +90,7 @@
     const URL = "https://robertocavalieri.pythonanywhere.com/"
 
 
-    const app = Vue.createApp({
+    const planes = Vue.createApp({
       data() {
         return {
           productos: [],
@@ -172,7 +175,7 @@
         },
       },
     })
-    app.mount('#app')
+    planes.mount('#planes')
   </script>
 </body>
 <footer>
